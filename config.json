@@ -1,0 +1,8 @@
+{
+  "sheet_name": "Snow Removal Data",
+  "worksheets": {
+    "responses": "Responses",
+    "records": "Records"
+  },
+  "api_key_path": "secrets/credentials.json"
+}

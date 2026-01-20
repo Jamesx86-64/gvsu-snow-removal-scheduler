@@ -1,0 +1,167 @@
+# This is from a template of mine which is why its so expansive
+
+# Secrets
+secrets/
+
+# Devenv
+*.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# Direnv
+*.direnv/
+
+# Log files
+*.log
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+
+# Pre-commit
+.pre-commit-config.yaml
+
+# Editor
+.DS_Store
+.vscode/
+.idea/
+.history/
+*.iml
+*.swp
+*.swo
+
+# Merge conflicts
+*.orig
+
+# Nix
+.nix-gc-roots
+.nix-defexpr/
+
+# Trash
+.Trash*
+
+# Build results
+result*
+
+# Disk Images
+*.qcow2
+*.img
+*.iso
+*.raw
+
+# Secrets (just in case they escape git hooks)
+*.key
+*.age
+*.pem
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Test files
+*.test
+
+# Object files
+*.o
+*.obj
+
+# Compiled binaries
+*.ilk
+*.exp
+*.out
+*.exe*
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Artifacts
+*.d
+*.prof
+*.map
+*.lst
+
+# Debug files
+*.dSYM/
+*.pdb
+core.*
+
+# Build directories
+build/
+dist/
+bin/
+out/
+obj/
+target/
+
+# Cmake files
+CMakeFiles/
+CMakeCache.txt
+
+# Python
+__pycache__/
+*.py[codz]
+*.pyo
+*.pyd
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Pytest
+.pytest_cache/
+
+# Ruff
+.ruff_cache/
+
+# Java
+*.jar
+*.war
+*.ear
+*.class
+
+# Gradle
+.gradle/
+
+# Maven
+.m2/
+
+# Node.js
+*.js.map
+*.d.ts.map
+.yarn/
+.pnp.*
+package-lock.json
+node_modules/
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Rust
+**/*.rs.bk
+
+# Go
+vendor/
+
+# Docs
+docs/_build/
+site/
+
+# Coverage
+coverage/
+htmlcov/
+*.coverage
+*.coveragexml

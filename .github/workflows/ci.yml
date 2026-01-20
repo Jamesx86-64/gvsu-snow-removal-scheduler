@@ -1,0 +1,48 @@
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  tests:
+    name: Tests & Checks
+    runs-on: ubuntu-latest
+
+    # Sets the shell to use devenv: https://devenv.sh/integrations/github-actions/
+    defaults:
+      run:
+        shell: devenv shell bash -- -e {0}
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      # Installs Nix for build
+      - uses: cachix/install-nix-action@v31
+
+      # Setup Nix caching with Cachix
+      - uses: cachix/cachix-action@v16
+        with:
+          name: devenv
+
+      - name: Install devenv.sh
+        shell: bash
+        run: nix profile install nixpkgs#devenv
+
+      - name: Secret Scan (TruffleHog)
+        uses: trufflesecurity/trufflehog@v3.92.5
+        with:
+          extra_args: --debug --only-verified
+
+      - name: Check Formatting (Treefmt)
+        run: treefmt --fail-on-change
+
+      - name: Lint (Ruff)
+        run: ruff check .
+
+      - name: Type Check (Pyright)
+        run: pyright
+
+      - name: Run Tests (Pytest)
+        run: pytest
