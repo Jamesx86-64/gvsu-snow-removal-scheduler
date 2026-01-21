@@ -1,4 +1,3 @@
-# Devenv template for a Python development environment.
 # Devenv is a modern development environment manager using nix.
 # Upstream URL: https://devenv.sh
 
@@ -73,7 +72,7 @@
       entry = "${config.devenv.state}/venv/bin/pytest";
     };
 
-    # Editor configuration
+    # File consistency
     check-added-large-files.enable = true;
     editorconfig-checker.enable = true;
     trim-trailing-whitespace.enable = true;
