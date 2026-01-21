@@ -19,13 +19,18 @@
     enable = true;
     config.programs = {
 
-      # Language formatter
+      # Python formatter
       ruff-format.enable = true;
 
-      # Keeps Nix files formatted properly
+      # Formatters for supporting files
       nixfmt.enable = true;
       deadnix.enable = true;
       statix.enable = true;
+      taplo.enable = true;
+      yamlfmt = {
+        enable = true;
+        settings.formatter.retain_line_breaks_single = true;
+      };
     };
   };
 
@@ -62,6 +67,7 @@
     treefmt.enable = true;
     ruff.enable = true;
     typos.enable = true;
+    markdownlint.enable = true;
     pyright = {
       enable = true;
       entry = "${pkgs.pyright}/bin/pyright --pythonpath ${config.devenv.state}/venv/bin/python";
