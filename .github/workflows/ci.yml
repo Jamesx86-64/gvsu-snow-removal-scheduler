@@ -35,14 +35,9 @@ jobs:
         with:
           extra_args: --debug --only-verified
 
-      - name: Check Formatting (Treefmt)
-        run: treefmt --fail-on-change
+      - name: Run Pre-commit Hooks
+        run: pre-commit run --all-files
 
-      - name: Lint (Ruff)
-        run: ruff check .
-
-      - name: Type Check (Pyright)
-        run: pyright
-
+        # Technically run in pre-commit, but good to run explicitly
       - name: Run Tests (Pytest)
         run: pytest

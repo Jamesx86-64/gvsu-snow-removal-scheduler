@@ -1,8 +1,9 @@
-import gspread
+import argparse
 import json
 import sys
-import argparse
-from typing import Optional, Any
+from typing import Any, Optional
+
+import gspread
 
 
 class Sheet:
