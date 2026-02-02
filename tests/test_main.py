@@ -201,7 +201,6 @@ def test_availability_basic_sorting(mock_responses_data, mock_records_data):
     # We need to emulate what update() does or fix the fixture.
     # For this test, let's fix the data passed in.
 
-    # Actually, let's just make sure the mock data used for DI has proper list format for Days if that's what Sheet expects internally.
     # Looking at Sheet logic:
     # row["Days"] = [day.strip() for day in row["Days"].split(",")]
 

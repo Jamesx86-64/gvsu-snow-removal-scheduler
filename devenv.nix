@@ -27,6 +27,10 @@
       deadnix.enable = true;
       statix.enable = true;
       taplo.enable = true;
+      mdformat = {
+        enable = true;
+        settings.wrap = 120;
+      };
       yamlfmt = {
         enable = true;
         settings.formatter.retain_line_breaks_single = true;
@@ -67,7 +71,18 @@
     treefmt.enable = true;
     ruff.enable = true;
     typos.enable = true;
-    markdownlint.enable = true;
+    markdownlint = {
+      enable = true;
+      settings.configuration = {
+        MD013 = {
+          line_length = 120;
+          ignore_code_blocks = true;
+          ignore_tables = true;
+          ignore_urls = true;
+        };
+        MD041 = false;
+      };
+    };
     pyright = {
       enable = true;
       entry = "${pkgs.pyright}/bin/pyright --pythonpath ${config.devenv.state}/venv/bin/python";

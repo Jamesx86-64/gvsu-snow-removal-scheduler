@@ -1,47 +1,52 @@
-[![CI](https://github.com/Jamesx86-64/gvsu-snow-removal-scheduler/actions/workflows/ci.yml/badge.svg)](
-https://github.com/Jamesx86-64/gvsu-snow-removal-scheduler/actions/workflows/ci.yml
-)
+[![CI](https://github.com/Jamesx86-64/gvsu-snow-removal-scheduler/actions/workflows/ci.yml/badge.svg)](https://github.com/Jamesx86-64/gvsu-snow-removal-scheduler/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 [![Built with devenv](https://devenv.sh/assets/devenv-badge.svg)](https://devenv.sh)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 # GVSU Rowing Snow Removal Calculator
 
-A Python automation tool built to manage snow removal logistics for the Grand Valley State University (GVSU) Rowing Team.
+A Python automation tool built to manage snow removal logistics for the Grand Valley State University (GVSU) Rowing
+Team.
 
-> This project demonstrates real-world management, scheduling, API integration, CI/CD practices, and a fairness-driven algorithm design.
+> This project demonstrates real-world management, scheduling, API integration, CI/CD practices, and a fairness-driven
+> algorithm design.
 
 ## Context & Motivation
 
-As an executive board member of the GVSU Rowing Team, I am tasked with coordinating our fundraising partnership with GVSU Facilities, where student-athletes are contracted to clear snow from campus walkways in order to help the community and pay for their rowing dues.
+As an executive board member of the GVSU Rowing Team, I am tasked with coordinating our fundraising partnership with
+GVSU Facilities, where student-athletes are contracted to clear snow from campus walkways in order to help the community
+and pay for their rowing dues.
 
-Coordinating these efforts manually takes time, and is prone to error and bias. We needed to dispatch 6-person teams on short notice while ensuring:
+Coordinating these efforts manually takes time, and is prone to error and bias. We needed to dispatch 6-person teams on
+short notice while ensuring:
 
--  **Safety:** Every team has an experienced Team Leader and a balance of Varsity and Novice rowers.
+- **Safety:** Every team has an experienced Team Leader and a balance of Varsity and Novice rowers.
 
--  **Fairness:** Work is distributed evenly across the roster, prioritizing those who haven't done as many snow removals.
+- **Fairness:** Work is distributed evenly across the roster, prioritizing those who haven't done as many snow removals.
 
--  **Speed:** Our contract is on call often between 12 to 24 hours before the snow removal the following morning at 5 AM, schedules need to be built quickly.
+- **Speed:** Our contract is on call often between 12 to 24 hours before the snow removal the following morning at 5 AM,
+  schedules need to be built quickly.
 
-I developed this application to automate the scheduling logic, saving administrative time and ensuring equitable treatment for all athletes.
+I developed this application to automate the scheduling logic, saving administrative time and ensuring equitable
+treatment for all athletes.
 
 ## Features
 
--  **Google Sheets API Integration:** Seamless access to live team data.
+- **Google Sheets API Integration:** Seamless access to live team data.
 
--  **Constraint-Based Scheduling:** Intelligently balances Varsity/Novice ratios.
+- **Constraint-Based Scheduling:** Intelligently balances Varsity/Novice ratios.
 
--  **Fairness Priority:** Automatic sorting by historical participation to ensure fairness.
+- **Fairness Priority:** Automatic sorting by historical participation to ensure fairness.
 
--  **Data Validation:** Automatic detection of duplicate submissions or roster mismatches.
+- **Data Validation:** Automatic detection of duplicate submissions or roster mismatches.
 
 ## How It Works
 
 1. Athletes submit availability via Google Forms.
 
-2. Responses are synced to Google Sheets.
+1. Responses are synced to Google Sheets.
 
-3. This tool:
+1. This tool:
 
    - validates submissions
 
@@ -49,15 +54,16 @@ I developed this application to automate the scheduling logic, saving administra
 
    - applies safety and roster constraints
 
-4. A 6-person snow removal team is generated automatically.
+1. A 6-person snow removal team is generated automatically.
 
 ## Algorithm & Architecture
 
-This tool integrates with the Google Sheets API to fetch real-time availability and roster data. It employs a custom scheduling algorithm and efficient data structures to compute the optimal team:
+This tool integrates with the Google Sheets API to fetch real-time availability and roster data. It employs a custom
+scheduling algorithm and efficient data structures to compute the optimal team:
 
-1.  **Data Ingestion:** Pulls availability and roster data into memory.
+1. **Data Ingestion:** Pulls availability and roster data into memory.
 
-2.  **The Algorithm:**
+1. **The Algorithm:**
 
 - Candidates are stored in a list of dictionaries and sorted by the number of shifts they have done.
 
@@ -79,9 +85,11 @@ This tool integrates with the Google Sheets API to fetch real-time availability 
 
 ### Optional (Recommended)
 
-- **Devenv**: Provides a fully reproducible development environment, including Python, formatting tools, linters, and test dependencies.
+- **Devenv**: Provides a fully reproducible development environment, including Python, formatting tools, linters, and
+  test dependencies.
 
-Dependencies are pinned via `devenv.lock` and `uv.lock` to ensure reproducible environments across local development and CI.
+Dependencies are pinned via `devenv.lock` and `uv.lock` to ensure reproducible environments across local development and
+CI.
 
 ## Quick Start
 
@@ -92,13 +100,13 @@ Dependencies are pinned via `devenv.lock` and `uv.lock` to ensure reproducible e
    cd gvsu-snow-removal-scheduler
    ```
 
-2. Set up the development environment (recommended):
+1. Set up the development environment (recommended):
 
    ```bash
    devenv shell
    ```
 
-3. Edit  `config.json` file:
+1. Edit `config.json` file:
 
    ```json
    {
@@ -111,13 +119,16 @@ Dependencies are pinned via `devenv.lock` and `uv.lock` to ensure reproducible e
    }
    ```
 
-4. Run the tool:
+1. Run the tool:
 
    Using `just` (recommended):
+
    ```bash
    just run
    ```
+
    or directly:
+
    ```bash
    python src/snow_removal_calculator/main.py
    ```
@@ -158,5 +169,4 @@ Dependencies are pinned via `devenv.lock` and `uv.lock` to ensure reproducible e
 
 ## License
 
-This project is licensed under the **MIT License**.
-See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
