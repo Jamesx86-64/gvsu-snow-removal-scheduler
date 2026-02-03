@@ -29,7 +29,8 @@
       taplo.enable = true;
       mdformat = {
         enable = true;
-        settings.wrap = 120;
+        settings.wrap = 80;
+        plugins = plugin: [ plugin.mdformat-gfm ];
       };
       yamlfmt = {
         enable = true;
@@ -38,27 +39,39 @@
     };
   };
 
-  # Enable Python language support (installs most basic tools)
-  languages.python = {
-    enable = true;
-    venv.enable = true;
-    manylinux.enable = true;
-    patches.buildEnv.enable = true;
-    lsp = {
+  languages = {
+
+    # Enable Nix language support for surrounding tooling
+    nix = {
       enable = true;
-      package = pkgs.pyright;
+      lsp = {
+        enable = true;
+        package = pkgs.nixd;
+      };
     };
 
-    # Python package, use one or the other
-    package = pkgs.python3;
-    version = null; # Use version number like "3.14.2" or "3.15" to pin
-
-    # Package managers, only use one
-    uv = {
+    # Enable Python language support (installs most basic tools)
+    python = {
       enable = true;
-      sync.enable = true;
+      venv.enable = true;
+      manylinux.enable = true;
+      patches.buildEnv.enable = true;
+      lsp = {
+        enable = true;
+        package = pkgs.pyright;
+      };
+
+      # Python package, use one or the other
+      package = pkgs.python3;
+      version = null; # Use version number like "3.14.2" or "3.15" to pin
+
+      # Package managers, only use one
+      uv = {
+        enable = true;
+        sync.enable = true;
+      };
+      poetry.enable = false;
     };
-    poetry.enable = false;
   };
 
   git-hooks.hooks = {
@@ -71,18 +84,6 @@
     treefmt.enable = true;
     ruff.enable = true;
     typos.enable = true;
-    markdownlint = {
-      enable = true;
-      settings.configuration = {
-        MD013 = {
-          line_length = 120;
-          ignore_code_blocks = true;
-          ignore_tables = true;
-          ignore_urls = true;
-        };
-        MD041 = false;
-      };
-    };
     pyright = {
       enable = true;
       entry = "${pkgs.pyright}/bin/pyright --pythonpath ${config.devenv.state}/venv/bin/python";
@@ -91,6 +92,18 @@
       enable = true;
       pass_filenames = false;
       entry = "${config.devenv.state}/venv/bin/pytest";
+    };
+    markdownlint = {
+      enable = true;
+      settings.configuration = {
+        MD013 = {
+          code_blocks = false;
+          tables = false;
+          urls = false;
+        };
+        MD060.style = "any";
+        MD041 = false;
+      };
     };
 
     # File consistency

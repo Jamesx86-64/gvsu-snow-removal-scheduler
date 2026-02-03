@@ -5,30 +5,34 @@
 
 # GVSU Rowing Snow Removal Calculator
 
-A Python automation tool built to manage snow removal logistics for the Grand Valley State University (GVSU) Rowing
-Team.
+A Python automation tool built to manage snow removal logistics for the Grand
+Valley State University (GVSU) Rowing Team.
 
-> This project demonstrates real-world management, scheduling, API integration, CI/CD practices, and a fairness-driven
-> algorithm design.
+> This project demonstrates real-world management, scheduling, API integration,
+> CI/CD practices, and a fairness-driven algorithm design.
 
 ## Context & Motivation
 
-As an executive board member of the GVSU Rowing Team, I am tasked with coordinating our fundraising partnership with
-GVSU Facilities, where student-athletes are contracted to clear snow from campus walkways in order to help the community
-and pay for their rowing dues.
+As an executive board member of the GVSU Rowing Team, I am tasked with
+coordinating our fundraising partnership with GVSU Facilities, where
+student-athletes are contracted to clear snow from campus walkways in order to
+help the community and pay for their rowing dues.
 
-Coordinating these efforts manually takes time, and is prone to error and bias. We needed to dispatch 6-person teams on
-short notice while ensuring:
+Coordinating these efforts manually takes time, and is prone to error and bias.
+We needed to dispatch 6-person teams on short notice while ensuring:
 
-- **Safety:** Every team has an experienced Team Leader and a balance of Varsity and Novice rowers.
+- **Safety:** Every team has an experienced Team Leader and a balance of Varsity
+  and Novice rowers.
 
-- **Fairness:** Work is distributed evenly across the roster, prioritizing those who haven't done as many snow removals.
+- **Fairness:** Work is distributed evenly across the roster, prioritizing those
+  who haven't done as many snow removals.
 
-- **Speed:** Our contract is on call often between 12 to 24 hours before the snow removal the following morning at 5 AM,
-  schedules need to be built quickly.
+- **Speed:** Our contract is on call often between 12 to 24 hours before the
+  snow removal the following morning at 5 AM, schedules need to be built
+  quickly.
 
-I developed this application to automate the scheduling logic, saving administrative time and ensuring equitable
-treatment for all athletes.
+I developed this application to automate the scheduling logic, saving
+administrative time and ensuring equitable treatment for all athletes.
 
 ## Features
 
@@ -36,9 +40,11 @@ treatment for all athletes.
 
 - **Constraint-Based Scheduling:** Intelligently balances Varsity/Novice ratios.
 
-- **Fairness Priority:** Automatic sorting by historical participation to ensure fairness.
+- **Fairness Priority:** Automatic sorting by historical participation to ensure
+  fairness.
 
-- **Data Validation:** Automatic detection of duplicate submissions or roster mismatches.
+- **Data Validation:** Automatic detection of duplicate submissions or roster
+  mismatches.
 
 ## How It Works
 
@@ -58,20 +64,24 @@ treatment for all athletes.
 
 ## Algorithm & Architecture
 
-This tool integrates with the Google Sheets API to fetch real-time availability and roster data. It employs a custom
-scheduling algorithm and efficient data structures to compute the optimal team:
+This tool integrates with the Google Sheets API to fetch real-time availability
+and roster data. It employs a custom scheduling algorithm and efficient data
+structures to compute the optimal team:
 
 1. **Data Ingestion:** Pulls availability and roster data into memory.
 
 1. **The Algorithm:**
 
-- Candidates are stored in a list of dictionaries and sorted by the number of shifts they have done.
+- Candidates are stored in a list of dictionaries and sorted by the number of
+  shifts they have done.
 
-- Greedily iterates through sorted candidates from least to greatest amount of snow removals done:
+- Greedily iterates through sorted candidates from least to greatest amount of
+  snow removals done:
 
   - **Find a Leader:** First available Team Leader is selected.
 
-  - **Fill Roster:** Remaining spots filled with priority on fairness and Varsity/Novice balance.
+  - **Fill Roster:** Remaining spots filled with priority on fairness and
+    Varsity/Novice balance.
 
 - This ensures that people who have done less snow removals are chosen first.
 
@@ -85,11 +95,11 @@ scheduling algorithm and efficient data structures to compute the optimal team:
 
 ### Optional (Recommended)
 
-- **Devenv**: Provides a fully reproducible development environment, including Python, formatting tools, linters, and
-  test dependencies.
+- **Devenv**: Provides a fully reproducible development environment, including
+  Python, formatting tools, linters, and test dependencies.
 
-Dependencies are pinned via `devenv.lock` and `uv.lock` to ensure reproducible environments across local development and
-CI.
+Dependencies are pinned via `devenv.lock` and `uv.lock` to ensure reproducible
+environments across local development and CI.
 
 ## Quick Start
 
@@ -157,7 +167,8 @@ CI.
 
 ## Testing & Quality Assurance
 
-- All checks as well as trufflehog run automatically in CI on every push and pull request
+- All checks as well as trufflehog run automatically in CI on every push and
+  pull request
 
 - All checks are enforced locally via Git pre-commit hooks when using `devenv`
 
@@ -169,4 +180,5 @@ CI.
 
 ## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE)
+file for details.
