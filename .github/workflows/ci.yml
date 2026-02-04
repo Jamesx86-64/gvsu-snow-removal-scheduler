@@ -1,3 +1,5 @@
+name: CI
+
 on:
   push:
     branches: [main]
@@ -14,17 +16,35 @@ jobs:
         shell: devenv shell bash -- -e {0}
 
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout repository
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      # Installs Nix for build
-      - uses: cachix/install-nix-action@v31
+      - name: Install Nix for build
+        uses: nixbuild/nix-quick-install-action@v30
+        with:
+          nix_conf: |
+            keep-env-derivations = true
+            keep-outputs = true
 
-      # Setup Nix caching with Cachix
-      - uses: cachix/cachix-action@v16
+      - name: Restore and save Nix store
+        uses: nix-community/cache-nix-action@v6
+        with:
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+          gc-max-store-size-linux: 1G
+          purge: true
+          purge-prefixes: nix-${{ runner.os }}-
+          purge-created: 0
+          purge-last-accessed: P1DT12H
+          purge-primary-key: never
+
+      - name: Setup caching with Cachix
+        uses: cachix/cachix-action@v16
         with:
           name: devenv
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Install devenv.sh
         shell: bash
@@ -38,6 +58,6 @@ jobs:
       - name: Run Pre-commit Hooks
         run: pre-commit run --all-files
 
-        # Technically run in pre-commit, but good to run explicitly
+      # Technically run in pre-commit, but good to run explicitly
       - name: Run Tests (Pytest)
         run: pytest
