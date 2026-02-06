@@ -24,8 +24,6 @@
 
       # Formatters for supporting files
       nixfmt.enable = true;
-      deadnix.enable = true;
-      statix.enable = true;
       taplo.enable = true;
       mdformat = {
         enable = true;
@@ -81,6 +79,8 @@
     check-merge-conflicts.enable = true;
 
     # Code quality
+    deadnix.enable = true;
+    statix.enable = true;
     treefmt.enable = true;
     ruff.enable = true;
     typos.enable = true;
