@@ -3,7 +3,7 @@
 [![Built with devenv](https://devenv.sh/assets/devenv-badge.svg)](https://devenv.sh)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-# GVSU Rowing Snow Removal Calculator
+# GVSU Rowing Snow Removal Scheduler
 
 A Python automation tool built to manage snow removal logistics for the Grand
 Valley State University (GVSU) Rowing Team.
