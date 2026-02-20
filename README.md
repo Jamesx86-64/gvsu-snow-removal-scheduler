@@ -1,4 +1,4 @@
-[![CI](https://github.com/Jamesx86-64/gvsu-snow-removal-scheduler/actions/workflows/ci.yml/badge.svg)](https://github.com/Jamesx86-64/gvsu-snow-removal-scheduler/actions/workflows/ci.yml)
+[![CI](https://github.com/James-1701/gvsu-snow-removal-scheduler/actions/workflows/ci.yml/badge.svg)](https://github.com/James-1701/gvsu-snow-removal-scheduler/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 [![Built with devenv](https://devenv.sh/assets/devenv-badge.svg)](https://devenv.sh)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -106,7 +106,7 @@ environments across local development and CI.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Jamesx86-64/gvsu-snow-removal-scheduler
+   git clone https://github.com/James-1701/gvsu-snow-removal-scheduler
    cd gvsu-snow-removal-scheduler
    ```
 
